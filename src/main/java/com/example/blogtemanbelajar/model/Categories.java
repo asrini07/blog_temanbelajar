@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class Categories extends AuditModel {
@@ -14,6 +15,7 @@ public class Categories extends AuditModel {
     private Long id;
 
     @Column(length = 45)
+    @NotEmpty(message = "Name Category must not be empty")
     private String name;
 
     public Long getId() {
