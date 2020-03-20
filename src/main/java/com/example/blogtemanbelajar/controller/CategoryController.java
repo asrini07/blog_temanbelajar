@@ -12,6 +12,8 @@ import com.example.blogtemanbelajar.repository.CategoryRepository;
 import com.example.blogtemanbelajar.service.CategoryService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,13 +36,13 @@ public class CategoryController {
     CategoryService categoryService;
 
     @GetMapping("/")
-    public ResponseEntity<ResponseDto> getAllCategories() {
+    public ResponseEntity<ResponseDto> getAllCategories(Pageable pageable) {
         
         ResponseDto response = new ResponseDto();
 
         try {
 
-            List<Categories> categories = categoryRepository.findAll();
+            Page<Categories> categories = categoryRepository.findAll(pageable);
             response.setStatus(true);
             response.setCode(200);
             response.setMessage("success");
@@ -89,8 +91,6 @@ public class CategoryController {
     public ResponseEntity<ResponseDto> createCategory(@RequestBody Categories categories) {
        
         ResponseDto response = new ResponseDto();
-
-        Categories category = new Categories();
 
         if( categories.getName().isEmpty() ) {
 
