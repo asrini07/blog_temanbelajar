@@ -32,19 +32,19 @@ public class Author extends AuditModel {
         this.id = id;
     }
 
-    public String getFirstName() {
+    public String getFirstname() {
         return first_name;
     }
 
-    public void setFirstName(String first_name) {
+    public void setFirstname(String first_name) {
         this.first_name = first_name;
     }
 
-    public String getLastName() {
+    public String getLastname() {
         return last_name;
     }
 
-    public void setLastName(String last_name) {
+    public void setLastname(String last_name) {
         this.last_name = last_name;
     }
 
